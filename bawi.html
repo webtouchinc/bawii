@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAWI - Home</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Manrope', 'Noto Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8fafb;
+      color: #0e161b;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #1a1a1a;
+      color: #ffffff;
+    }
+    .dark-mode .header-icons i,
+    .dark-mode .footer i {
+      color: #ffffff; /* Icons turn white in dark mode */
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    @media (min-width: 768px) {
+      .container {
+        max-width: 768px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1024px;
+      }
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .app-name {
+      font-size: 28px;
+      font-weight: 800;
+      color: #2aa0e5;
+    }
+    .header-icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .header-icons i {
+      font-size: 24px;
+      cursor: pointer;
+      color: #0e161b; /* Icons are black in light mode */
+    }
+
+    /* Plan Indicator */
+    .plan-indicator {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      width: fit-content;
+    }
+    .basic {
+      background-color: #d0dee6;
+      color: #0e161b;
+    }
+    .premium {
+      background-color: #2aa0e5;
+      color: #ffffff;
+    }
+    .advanced {
+      background-color: #ff6b6b;
+      color: #ffffff;
+    }
+
+    /* Wi-Fi Status */
+    .wifi-status {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wifi-icon {
+      font-size: 24px;
+    }
+
+    /* Storage Information */
+    .storage-info {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .action-buttons button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .start-storing {
+      background-color: #2aa0e5;
+      color: #ffffff;
+    }
+    .upgrade {
+      background-color: #e8eff3;
+      color: #0e161b;
+    }
+
+    /* Footer Navigation */
+    .footer {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid #e8eff3;
+      padding-top: 20px;
+    }
+    .footer i {
+      font-size: 20px;
+      cursor: pointer;
+      color: #0e161b; /* Icons are black in light mode */
+    }
+
+    /* Pages */
+    .page {
+      display: none; /* Hidden by default */
+    }
+    .page h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .back-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2aa0e5;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Start Storing Page */
+    .start-storing-page input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #e8eff3;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    .start-storing-page button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2aa0e5;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Upgrade Page */
+    .upgrade-page .plan {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #e8eff3;
+      border-radius: 10px;
+    }
+    .upgrade-page .plan h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .upgrade-page .plan ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .upgrade-page .plan ul li {
+      margin-bottom: 10px;
+    }
+    .upgrade-page .plan button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2aa0e5;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Page -->
+  <div class="container page home-page">
+    <!-- Header -->
+    <div class="header">
+      <div class="app-name">BAWI</div>
+      <div class="header-icons">
+        <i class="fas fa-moon" onclick="toggleMode()"></i>
+        <i class="fas fa-cog" onclick="loadPage('settings-page')"></i>
+      </div>
+    </div>
+
+    <!-- Plan Indicator -->
+    <div class="plan-indicator basic">Basic Plan</div>
+
+    <!-- Wi-Fi Status -->
+    <div class="wifi-status">
+      <div class="wifi-icon">📶</div>
+      <div>Connected to: Home Wi-Fi</div>
+    </div>
+
+    <!-- Storage Information -->
+    <div class="storage-info">Stored: 500MB</div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="start-storing" onclick="loadPage('start-storing-page')">Start Storing</button>
+      <button class="upgrade" onclick="loadPage('upgrade-page')">Upgrade</button>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer">
+      <i class="fas fa-home" onclick="loadPage('home-page')"></i>
+      <i class="fas fa-chart-line" onclick="loadPage('plans-page')"></i>
+      <i class="fas fa-user-circle" onclick="loadPage('account-page')"></i>
+      <i class="fas fa-share-alt" onclick="loadPage('share-page')"></i>
+      <i class="fas fa-heart" onclick="loadPage('follow-page')"></i>
+    </div>
+  </div>
+
+  <!-- Settings Page -->
+  <div class="container page settings-page">
+    <h2>Settings</h2>
+    <div class="setting-item">
+      <label for="notifications">Enable Notifications</label>
+      <input type="checkbox" id="notifications" checked>
+    </div>
+    <div class="setting-item">
+      <label for="dark-mode">Dark Mode</label>
+      <input type="checkbox" id="dark-mode" onchange="toggleMode()">
+    </div>
+    <div class="setting-item">
+      <label for="auto-save">Auto Save Data</label>
+      <input type="checkbox" id="auto-save">
+    </div>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <!-- Start Storing Page -->
+  <div class="container page start-storing-page">
+    <h2>Start Storing</h2>
+    <input type="number" placeholder="Enter MB to store" id="mb-to-store">
+    <input type="number" placeholder="Enter duration (days/hours)" id="duration">
+    <button onclick="startStoring()">Start Storing</button>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <!-- Upgrade Page -->
+  <div class="container page upgrade-page">
+    <h2>Upgrade Plan</h2>
+    <div class="plan basic">
+      <h3>Basic Plan</h3>
+      <ul>
+        <li>Store up to 1GB</li>
+        <li>Duration: 24 hours</li>
+        <li>Free</li>
+      </ul>
+      <button onclick="upgradePlan('basic')">Select Basic</button>
+    </div>
+    <div class="plan advanced">
+      <h3>Advanced Plan</h3>
+      <ul>
+        <li>Store up to 10GB</li>
+        <li>Duration: 7 days</li>
+        <li>$5/month</li>
+      </ul>
+      <button onclick="upgradePlan('advanced')">Select Advanced</button>
+    </div>
+    <div class="plan premium">
+      <h3>Premium Plan</h3>
+      <ul>
+        <li>Store up to 50GB</li>
+        <li>Duration: 30 days</li>
+        <li>$10/month</li>
+      </ul>
+      <button onclick="upgradePlan('premium')">Select Premium</button>
+    </div>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <!-- Plans Page -->
+  <div class="container page plans-page">
+    <h2>Plans</h2>
+    <p>Choose a plan that suits your needs:</p>
+    <ul>
+      <li>Basic Plan - Free</li>
+      <li>Premium Plan - $5/month</li>
+      <li>Advanced Plan - $10/month</li>
+    </ul>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <!-- Account Page -->
+  <div class="container page account-page">
+    <h2>Account</h2>
+    <p>Manage your account settings:</p>
+    <ul>
+      <li>Change Password</li>
+      <li>Update Email</li>
+      <li>Delete Account</li>
+    </ul>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <!-- Share Page -->
+  <div class="container page share-page">
+    <h2>Share</h2>
+    <p>Share the app with your friends:</p>
+    <button class="start-storing">Share via Email</button>
+    <button class="start-storing">Share via Social Media</button>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <!-- Follow Page -->
+  <div class="container page follow-page">
+    <h2>Follow Us</h2>
+    <p>Stay connected with us:</p>
+    <ul>
+      <li>Twitter</li>
+      <li>Facebook</li>
+      <li>Instagram</li>
+    </ul>
+    <button class="back-button" onclick="loadPage('home-page')">Back to Home</button>
+  </div>
+
+  <script>
+    // Toggle Light/Dark Mode
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      const modeIcon = document.querySelector('.fa-moon');
+      if (document.body.classList.contains('dark-mode')) {
+        modeIcon.classList.remove('fa-moon');
+        modeIcon.classList.add('fa-sun');
+      } else {
+        modeIcon.classList.remove('fa-sun');
+        modeIcon.classList.add('fa-moon');
+      }
+    }
+
+    // Load a Specific Page
+    function loadPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.style.display = 'none';
+      });
+      // Show the selected page
+      document.querySelector(`.${pageId}`).style.display = 'block';
+    }
+
+    // Start Storing Functionality
+    function startStoring() {
+      const mbToStore = document.getElementById('mb-to-store').value;
+      const duration = document.getElementById('duration').value;
+      if (mbToStore && duration) {
+        alert(`Storing ${mbToStore}MB for ${duration} days/hours.`);
+        loadPage('home-page');
+      } else {
+        alert('Please enter valid values for MB and duration.');
+      }
+    }
+
+    // Upgrade Plan Functionality
+    function upgradePlan(plan) {
+      alert(`You have selected the ${plan} plan.`);
+      loadPage('home-page');
+    }
+
+    // Initialize by showing the home page
+    loadPage('home-page');
+  </script>
+</body>
+</html>
